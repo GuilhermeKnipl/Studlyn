@@ -1,0 +1,61 @@
+#timer_box { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 54px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
+    align-content: center;
+    width: 550px;
+    background-color: rgb(26, 22, 22);
+    height: 100px;
+    border-radius: 6px;
+}
+
+#timer_box-light { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 54px;
+    box-shadow: rgba(92, 91, 91, 0.35) 0px 5px 15px;
+    text-align: center;
+    align-content: center;
+    width: 550px;
+    background-color: rgb(139, 138, 138);
+    height: 100px;
+    border-radius: 6px;
+}
+
+#break_box { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 54px;
+    box-shadow: rgba(240, 1, 1, 0.968) 0px 5px 15px;
+    text-align: center;
+    align-content: center;
+    width: 300px;
+    background-color: rgb(155, 18, 18);
+    height: 100px;
+    border-radius: 6px;
+    transition: left 0.5s ease-in-out;
+}
+
+
+#selectbox{
+    appearance: none;
+    background-color: rgb(26, 22, 22);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-right: 7px;
+    margin-bottom: -10px;
+    border: none;
+    width: 150px;
+    height: 30px;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+    color: antiquewhite;
+    text-align: center;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    z-index: 1;
+
+    background-image: url("data:image/svg+xml;utf8,<svg fill='antiquewhite' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.5em center;
+    background-size: 1em;
+}
