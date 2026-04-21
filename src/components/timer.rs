@@ -105,7 +105,7 @@ pub fn Countdown_timer(timer: Timer, timer_break: Timer) -> Element {
             option {value: 30*1, "30 Segundos"},
         }
 
-        div {
+        div { //This div shows the main timer and breaktimer if break.control is true
             style: "display: flex; gap: 10px; align-items: center;",
             h1 { id: "timer_box", "{format_hms((timer.value)())}" }
             if (timer_break.control)() {
@@ -116,7 +116,9 @@ pub fn Countdown_timer(timer: Timer, timer_break: Timer) -> Element {
         div {
             id: "buttons_div",
             Breaktimer{ timer: timer, timer_break: timer_break},
-
+            Finishtimer { timer: timer }
+            
+            // Start
             if (timer_break.control)() {
                 div {}
             } else if (timer.control)() {
@@ -131,7 +133,7 @@ pub fn Countdown_timer(timer: Timer, timer_break: Timer) -> Element {
                     div{}
                 }
             } else {
-                Start_Timer { timer: timer } // i need to fix the logic when the div = to 0
+                Start_Timer { timer: timer } 
             }
         }
     )
@@ -158,20 +160,40 @@ fn Breaktimer(timer: Timer, timer_break: Timer)-> Element{
     )
 }
 
+
 #[component]
-pub fn Break_timer (mut main_controler:Signal<bool>,break_control:Signal<bool>)-> Element{
+fn Finishtimer(timer: Timer)-> Element{
     rsx!(
-        if break_control(){
+        if (timer.control)(){
            button {
            id:"button2",
-           onclick: move |_| {main_controler.set(true);break_control.set(false);}, 
+           onclick: move |_| {timer.control.set(true);timer.control.set(false);}, 
            "End Break" 
            }   
         }
         else{
             button {
                 id:"button2",
-                onclick: move |_| {main_controler.set(false);break_control.set(true);}, 
+                onclick: move |_| {timer.control.set(false);timer.control.set(true);}, 
+                "Extend Timer"
+                }
+            }
+    )
+}
+#[component]
+pub fn Break_timer (mut main_control:Signal<bool>,break_control:Signal<bool>)-> Element{
+    rsx!(
+        if break_control(){
+           button {
+           id:"button2",
+           onclick: move |_| {main_control.set(true);break_control.set(false);}, 
+           "End Break" 
+           }   
+        }
+        else{
+            button {
+                id:"button2",
+                onclick: move |_| {main_control.set(false);break_control.set(true);}, 
                 "Start Break" //the idea is to popup like a timer aside the main timer, and play end sound
                 }
             }
